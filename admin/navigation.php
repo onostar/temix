@@ -14,7 +14,7 @@
             <i class="fas fa-chevron-down"></i></button>
         <div class="login_option" id="account">
             <div>
-                <a href="javascript:void(0);" class="signupBtn">Profile</a>
+                <a href="javascript:void(0);" class="signupBtn">Change Password</a>
                 <!-- <a href="javascript:void(0);" class="signupBtn">My orders</a> -->
                 <button id="logoutBtn"><a href="logout.php">Logout</a></button>
                 

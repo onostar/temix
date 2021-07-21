@@ -58,7 +58,7 @@
                 
             </div>
             <hr>
-            <h3>Categoroies</h3>
+            <h3>Categories</h3>
             <ul id="footCat">
                 <li><a href="javascript:void(0);"><i class="fas fa-ice-cream"></i>Ice cream</a> </li>
                 <li><a href="javascript:void(0);"><i class="fas fa-hamburger"></i>Snacks</a> </li>

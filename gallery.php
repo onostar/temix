@@ -199,7 +199,7 @@
                     foreach($photos as $photo):
                 ?>
                 <figure>
-                    <video controls src="<?php echo '..media/'. $photo->foto;?>" alt="Temix Media"></video>
+                    <video controls src="<?php echo 'media/'. $photo->foto;?>" alt="Temix Media"></video>
                     <figcaption>
                         <p><?php echo $photo->description;?></p>
                     </figcaption>

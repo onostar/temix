@@ -36,7 +36,7 @@
                 <i class="fas fa-chevron-down"></i></button>
             <div class="login_option" id="account">
                 <div>
-                    <a href="javascript:void(0);" class="signupBtn">Profile</a>
+                    <a href="javascript:void(0);" class="signupBtn">Change Password</a>
                     <!-- <a href="javascript:void(0);" class="signupBtn">My orders</a> -->
                     <button id="logoutBtn"><a href="logout.php">Logout</a></button>
                     
@@ -126,7 +126,7 @@
                             <i class="fas fa-store"></i>
                             <p>
                                 <?php
-                                    $users = $connectdb->prepare("SELECT * FROM appointments WHERE appointment_date >= CURDATE()");
+                                    $users = $connectdb->prepare("SELECT * FROM appointments");
                                     $users->execute();
                                     echo $users->rowCount();
                                 ?>
@@ -293,7 +293,7 @@
             <div id="addItems">
                 <div class="info"></div>
                 <div class="add_user_form">
-                    <h3>Add items</h3>
+                    <h3>Add items to Store</h3>
                     <form method="POST" id="addItemForm" action="add_items.php" enctype="multipart/form-data">
                         <div class="inputs">
                             
@@ -647,18 +647,18 @@
                     ?>
                     <tbody>
                         <tr>
-                            <td style="text-align:center;"><button style="padding:5px 10px; background:skyblue;" title="Click to View Event" onclick="displayEvent('<?php echo $row->booking_id;?>');"><?php echo $n?></button></td>
+                            <td style="text-align:center;"><button style="padding:5px 10px; background:#fff; color:rgb(77, 74, 74); box-shadow:2px 2px 2px var(--secondaryColor);" title="Click to View Event" onclick="displayEvent('<?php echo $row->booking_id;?>');"><?php echo $n?></button></td>
                             <td><?php echo $row->customer_name?></td>
                             <td><?php echo $row->service?></td>
                             <td><?php echo $row->appointment_date?></td>
-                            <td style="text-align:Center;">
+                            <td>
                                 <?php $order_status = $row->status;
                                 if($order_status == 1){
-                                    echo "<p style='background:green; padding:4px; color:#fff;'>Done <i class='fas fa-check'></i></p>";
+                                    echo "<p style='color:green'>Done</p>";
                                 }elseif($order_status == -1){
-                                    echo "<p style='background:red; padding:4px; color:#fff;'>Cancelled <i class='fas fa-window-close'></i></p>";
+                                    echo "<p style='color:red'>Cancelled</p>";
                                 }else{
-                                    echo "<p style='background:rgb(167, 199, 50); padding:4px; color:#fff;'>In Review <i class='fas fa-paper-plane'></i></p>";
+                                    echo "<p style=' color:rgb(167, 199, 50);'>In Review</p>";
                                 }
                                 ?>
                             </td>
@@ -953,6 +953,9 @@
                     
                     ?>
                 </div>
+            </div>
+            <div id="account" class="management">
+                <?php include "profile.php";?>
             </div>
         </section>
     </main>

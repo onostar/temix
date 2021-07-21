@@ -33,7 +33,7 @@ $(document).ready(function(){
         $("#subscribers").hide();
         $("#highestSellingItems").hide();
         $(".summaryReports").hide();
-        
+        $("#events_info").hide();
 
     })
 })
@@ -1255,21 +1255,25 @@ function cancelOrderUser(order_id){
 //update password
 $(document).ready(function(){
   $("#change_passwords").click(function(){
-      let rest_email = document.getElementById("rest_email").value;
+      let admin_email = document.getElementById("admin_email").value;
       let current_password = document.getElementById("current_password").value;
       let new_password = document.getElementById("new_password").value;
       let retype_password = document.getElementById("retype_password").value;
-        // alert(rest_email);
+        // alert(retype_password);
       $.ajax({
             type: "POST",
             url: "change_password.php",
-            data: {rest_email:rest_email, current_password:current_password, new_password:new_password, retype_password:retype_password},
+            data: {admin_email:admin_email, current_password:current_password, new_password:new_password, retype_password:retype_password},
             success : function(response){
                 $(".info").html(response);
                           
             }
       })
-      $(".change_password").hide();
+    //   $(".change_password").hide();
+      $("#current_password").val('');
+      $("#current_password").focus();
+      $("#new_password").val('');
+      $("#retype_password").val('');
       return false;
   })  
 })
@@ -1372,6 +1376,8 @@ $(document).ready(function(){
         $("#uploadBanner4").hide();
         $("#dashboard").hide();
         $("#uploadAds").hide();
+        $(".bannerBtns").hide();
+
     })
 })
 //display upload banner2
@@ -1383,6 +1389,8 @@ $(document).ready(function(){
         $("#uploadBanner4").hide();
         $("#dashboard").hide();
         $("#uploadAds").hide();
+        $(".bannerBtns").hide();
+
     })
 })
 //display upload banner3
@@ -1394,6 +1402,8 @@ $(document).ready(function(){
         $("#uploadBanner4").hide();
         $("#dashboard").hide();
         $("#uploadAds").hide();
+        $(".bannerBtns").hide();
+
     })
 })
 //display upload banner4
@@ -1405,6 +1415,8 @@ $(document).ready(function(){
         $("#uploadBanner3").hide();
         $("#dashboard").hide();
         $("#uploadAds").hide();
+        $(".bannerBtns").hide();
+
     })
 })
 //display upload advert
@@ -1416,6 +1428,8 @@ $(document).ready(function(){
         $("#uploadBanner3").hide();
         $("#dashboard").hide();
         $("#uploadAds").show();
+        $(".bannerBtns").hide();
+
     })
 })
 
@@ -1428,5 +1442,7 @@ $(document).ready(function(){
         $("#uploadBanner4").hide();
         // $("#dashboard").show();
         $("#uploadAds").hide();
+        $(".bannerBtns").show();
+
     })
 })

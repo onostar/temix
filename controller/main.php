@@ -463,7 +463,7 @@
             <h2>Popular Items <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></h2>
             <div class="all_items popular_items">
                 <?php
-                    $select_all = $connectdb->prepare("SELECT menu.item_id, menu.item_category, menu.item_name, menu.item_prize, menu.item_foto, menu.item_description, menu.time_created, orders.quantity, orders.item_name FROM orders, menu WHERE menu.item_name = orders.item_name AND orders.quantity >= 3 GROUP BY orders.item_name");
+                    $select_all = $connectdb->prepare("SELECT menu.item_name, menu.item_category, menu.item_prize, menu.item_foto, menu.item_id, orders.item_name FROM orders, menu WHERE menu.item_name = orders.item_name AND orders.quantity >= 2 GROUP BY orders.item_name");
                     $select_all->execute();
                     $rows = $select_all->fetchAll();
                     foreach($rows as $row):

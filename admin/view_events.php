@@ -34,7 +34,7 @@
     <header class="admin_header">
         <h1 class="logo">
             <a href="admin.php" title="home">
-                <img src="images/temix_empire_logo1.jpg" alt="Temix empire" class="img-fluid">
+                <img src="images/temix_empire_logo2.png" alt="Temix empire" class="img-fluid">
             </a>
         </h1>
         <div class="rms">
@@ -56,7 +56,7 @@
                 <i class="fas fa-chevron-down"></i></button>
             <div class="login_option" id="account">
                 <div>
-                    <a href="javascript:void(0);" class="signupBtn">Profile</a>
+                    <a href="javascript:void(0);" class="signupBtn">Change Password</a>
                     <!-- <a href="javascript:void(0);" class="signupBtn">My orders</a> -->
                     <button id="logoutBtn"><a href="logout.php">Logout</a></button>
                     
@@ -180,6 +180,8 @@
                     </form>
                 </div>
             </div>
+            <!-- Upload Banner and Adverts -->
+            <?php include "banner_ads.php";?>
             <!-- add categories -->
             <div id="addCategories">
                 <div class="info"></div>
@@ -199,7 +201,7 @@
             <div id="addItems">
                 <div class="info"></div>
                 <div class="add_user_form">
-                    <h3>Add items</h3>
+                    <h3>Add items to Store</h3>
                     <form method="POST" id="addItemForm" action="add_items.php" enctype="multipart/form-data">
                         <div class="inputs">
                             
@@ -553,7 +555,7 @@
                     ?>
                     <tbody>
                         <tr>
-                            <td style="text-align:center;"><button style="padding:5px 10px; background:skyblue;" title="Click to View Event" onclick="displayEvent('<?php echo $row->booking_id;?>');"><?php echo $n?></button></td>
+                            <td style="text-align:center;"><button style="padding:5px 10px; background:var(--secondaryColor);" title="Click to View Event" onclick="displayEvent('<?php echo $row->booking_id;?>');"><?php echo $n?></button></td>
                             <td><?php echo $row->customer_name?></td>
                             <td><?php echo $row->service?></td>
                             <td><?php echo $row->appointment_date?></td>
@@ -860,6 +862,9 @@
                     ?>
                 </div>
             </div>
+            <div id="account" class="management">
+                <?php include "profile.php";?>
+            </div>
         </section>
     </main>
     
@@ -875,6 +880,3 @@
         header("Location: ../registration.php");
     }
 ?> 
-
-
-    

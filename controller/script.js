@@ -26,6 +26,12 @@ window.onscroll = function(){
         return false;
     })
 }) */
+
+//display home page after intro
+setTimeout(function(){
+    $(".main").show();
+    $(".loader").hide();
+}, 4000)
 //display login on desktop page
 $(document).ready(function(){
     $("#loginDiv").click(function(){
@@ -72,7 +78,7 @@ $(document).ready(function(){
     });
     $("#videoBtn").click(function(){
         $("#photos").hide();
-        $("#video").show();
+        $("#video").css("display", "flex");
     })
 })
 //display more featured items
