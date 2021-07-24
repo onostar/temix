@@ -1,6 +1,7 @@
 <?php
-    session_start();
     require "controller/server.php";
+    session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,11 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Temix Empire is a Catering Company, we are Specialized in Cakes of all kinds Like Wedding cakes, Birthday cakes, Anniversary cakes, chcocolate cakes, Coconut Cakes, Banana cakes and many others. We also provide Make-up service for weddings, Party, Birthdays and Photo Shoot, we supply quality beddings for Hotels, Schools, Hospitals and Homes. We also specialize in Event Planning, Decorations for all Occations, Fashionable Beads, and Graphic Designs. Temix Empire always serve up Quality of Service you can trust">
     <meta name="keywords" content="cakes, beddings, wedding cakes, birthday cakes, decorations, weddings, makeup, make-up, make-up artiste, event planning, events, chcocolate cakes, icing">
-    <title>Temix Empire | Login/Register</title>
+    <title>Temix Empire | About us</title>
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
-    <link rel="icon" type="image/png" href="images/temix_empire_logo1.jpg" size="32X32">
+    <link rel="icon" type="image/png" href="../images/temix_empire_logo1.jpg" size="32X32">
     <link rel="stylesheet" href="controller/style.css">
     
 </head>
@@ -28,7 +29,7 @@
         </div>
         <div class="contact_phone">
             <button class="appointment" id="bookings">Book Appointment</button>
-            <p class="text-right"><i class="fas fa-mobile-alt"></i> <span class="call">Call us: </span> +2347041350926</p>
+            <p class="text-right"><i class="fas fa-mobile-alt"></i> <span class="call">Call us: +2348157985866</span> +2347041350926</p>
         </div>
     </section>
     <header>
@@ -164,121 +165,62 @@
         </div>
         
     </section>
-    <main>
-        <div class="success">
-            <?php
-                if(isset($_SESSION['success'])){
-                    echo "<p>" .$_SESSION['success']. "</p>";
-                    unset($_SESSION['success']);
-                }
-            ?>
+    <section id="existence">
+        <h2>Get to know us</h2>
+        <hr>
+        <h3>Our Existence</h3>
+        <div class="story">
+            <p>Temix Empire is a Catering Company, located in Warri, Nigeria. Founded by Omotoye Temidayo Mabel in 2015.<br>We are  specialized in Cake making for all kinds of occassions which include; Weddings, Birthdays, Anniversaries, etc, as well as planning events and decoration for your weddings, birthdays, anniversaries and more.<br>We also supply quality beddings for Hotels, Schools, Hospitals and Homes.<br><br>What makes us stand out amongst others is our creativity and commitment to quality, and exceptional customer service is at the heart of what we do. We always put our clients needs first.<br>We advice our clients on the best options for any service/product we are rendering. Our products/service are very economical.<br>All our products are made from premium quality ingredients with special touches to suite your need.<br><br>Temix Empire always serve up trusted Quality of Service. Contact us today, lets make your occassion an elegant and memorable one.<br>
+                <a href="contact.php" title="contact us">Visit us today</a> or <br><a class="appointment schedule" href="javascript:void(0);" title="Book an Appointment">Schedule an Appointment</a>
+            </p>
+            <img src="images/baking_cakes.jpg" alt="Temix Empire">
         </div>
-        <section id="login_reg">
-            <div class="login_details">
-                <div class="error">
-                    <?php
-                        if(isset($_SESSION['error'])){
-                            echo "<p>". $_SESSION['error']. "</p>";
-                            unset($_SESSION['error']);
-                        }
-                    ?>
-                </div>
-                <h2>Enter login details</h2>
-                <form action="controller/login.php" method="post">
-                    <label for="login">Email</label><br>
-                    <input type="email" name="email" id="login" placeholder="Enter your email" required><br><br>
-                    <label for="password">Password</label><br>
-                    <input type="password" name="user_password" id="password" placeholder="Enter password" required><br>
-                    <button type="submit" name="submit_login">Login</button>
-                </form>
+    </section>
+    <section id="hero">
+        <div class="hero_image">
+            <img src="images/events.jpg" alt="hero image">
+        </div>
+        <div class="hero_notes">
+            <div class="note">
+                <h3>100+</h3>
+                <p>Customers</p>
             </div>
-                
-            <div class="reg_details">
-                <h2>Register for a new account</h2>
-                <div class="error">
-                    <?php
-                        if(isset($_SESSION['error'])){
-                            echo "<p>". $_SESSION['error']. "</p>";
-                            unset($_SESSION['error']);
-                        }
-                    ?>
-                </div>
-                <form action="controller/register.php" method="POST">
-                    <div class="details">
-                        <input type="text" name="first_name" placeholder="First Name">
-                        <input type="text" name="last_name" placeholder="Last Name">
-                    </div>
-                    <div class="details">
-                        <input type="email" name="email" placeholder="Email">
-                        <input type="tel" name="phone_number" placeholder="Phone Number">
-                    </div>
-                    <div class="details">
-                        <input type="password" name="user_password" placeholder="enter password">
-                        <input type="password" name="confirm_password" placeholder="Confirm password">
-                    </div>
-                    <button type="submit" name="submit_reg">Register</button>
-                </form>
+            <div class="note">
+                <h3>20+</h3>
+                <p>Events Covered</p>
             </div>
-        </section>
-        <div class="appointment_page">
-        <div class="result"></div>
-
-            <div id="appointment_page">
-                <div id="close">
-                    <a href="javascript:void(0)" title="Close"><i class="fas fa-window-close"></i></a>
-                </div>
-                <h2>Appointment Booking form</h2>
-                <form method="POST" action="controller/appointment.php">
-                    <div class="inputs">
-                        <div class="data">
-                            <label for="customer_name">Full Name</label><br>
-                            <input type="text" id="customer_name" name="customer_name" placeholder="James Awolowo" required>
-                        </div>
-                        <div class="data">
-                            <label for="customer_phone">Phone Number</label><br>
-                            <input type="tel" id="customer_phone" name="customer_phone" placeholder="+237012345678" required>
-                        </div>
-                    </div>
-                    <div class="inputs">
-                        <div class="data">
-                            <label for="customer_email">Email address</label><br>
-                            <input type="email" id="customer_mail" name="customer_mail" placeholder="mail@example.com" required>
-                        </div>
-                        <div class="data">
-                            <label for="service">Type of service</label><br>
-                            <select name="service" id="service" required>
-                                <option value="" selected>Select Service type</option>
-                                <option value="Event (Decoration)">Events (Decoration)</option>
-                                <option value="Event (Cake design)">Events (Cake Design)</option>
-                                <option value="General Appontment" >General Appointment</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="inputs">
-                        <div class="data">
-                            <label for="appointment_date">Appointment date</label><br>
-                            <input type="date" id="appointment_date" name="appointment_date" required>
-                        </div>
-                        <div class="data">
-                            <label for="appointment_addresss">Event/Booking Address</label><br>
-                            <input type="text" id="appointment_address" name="appointment_address" required>
-                        </div>
-                    </div>
-                    <div class="inputs">
-                        <div class="data" id="textarea">
-                            <textarea name="notes" id="notes" rows="5" placeholder="Add more information/description of your Event"></textarea>
-                        </div>
-                        <div class="data">
-                            <button type="submit" id="book" name="book">Book Appointment <i class="fas fa-paper-plane"></i></button>
-                        </div>
-                    </div>
-                </form>
+            <div class="note">
+                <h3>10</h3>
+                <p>Staffs</p>
+            </div>
+            <div class="note">
+                <h3>5+</h3>
+                <p>Years of Experience</p>
             </div>
         </div>
-    </main>
+    </section>
+    <section id="mission_vision" >
+        <h2>Our purpose</h2>
+        <hr>
+        <div class="mission_vision">
+            <div class="misvis" id="miss">
+                <h3>Our mission statement</h3>
+                <p>Our efforts are tailored towards making sure that our clients are satisfied, hence ending their search for satisfactio</p>
+            </div>
+            <hr>
+            <div class="misvis" id="viss">
+                <h3>Our vision</h3>
+                <p>We aim To be the first choice of consumers in the southern Region of Nigeria and beyond, as well as create a benchmark in quality standards in cake making and events planning.<br>To be a leading cake maker, trainer, and event manager offering best Quality of Service/products.
+                </p>
+            </div>
+        </div>
+    </section>
+        
     
+    <?php include "footer.php";?>
     <script src="controller/bootstrap.min.js"></script>
     <script src="controller/jquery.js"></script>
     <script src="controller/script.js"></script>
+    
 </body>
 </html>

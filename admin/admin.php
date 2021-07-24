@@ -197,7 +197,7 @@
                 <div class="customers_attended">
                     <h3>Daily Encounters</h3>
                     <?php
-                        $get_customers = $connectdb->prepare("SELECT SUM(item_price) AS total_sales FROM orders WHERE order_status = 1 AND delivery_date = CURDATE()");
+                        $get_customers = $connectdb->prepare("SELECT SUM(item_price) AS total_sales FROM orders WHERE order_status = 1 AND order_date = CURDATE()");
                         $get_customers->execute();
                         
                         $customers = $get_customers->fetchAll();
@@ -214,7 +214,7 @@
                             <tr>
                                 <td>
                                 <?php 
-                                    $get_total_customers = $connectdb->prepare("SELECT item_name FROM orders WHERE order_date = CURDATE() GROUP BY order_number");
+                                    $get_total_customers = $connectdb->prepare("SELECT item_name FROM orders WHERE order_date = CURDATE() AND order_status = 1 GROUP BY order_number");
                                     $get_total_customers->execute();
                                     $total_customers = $get_total_customers->rowCount();
                                     echo $total_customers;
@@ -954,8 +954,59 @@
                     ?>
                 </div>
             </div>
+            <!-- Profile -->
             <div id="account" class="management">
                 <?php include "profile.php";?>
+            </div>
+            <!-- Event info -->
+            <div class="management" id="events_info">
+                <?php
+                    if(isset($_GET['event'])){
+                        $booking_id = $_GET['event'];
+                
+                        $select_event = $connectdb->prepare("SELECT * FROM appointments WHERE booking_id = :booking_id");
+                        $select_event->bindvalue("booking_id", $booking_id);
+                        $select_event->execute();
+                
+                        $views = $select_event->fetchAll();
+                        foreach($views as $view):
+                ?>
+                <h3><?php echo $view->service;?></h3>
+                <hr>
+                <div class="events">
+                    <div class="appointments">
+                        <div class="event_info">
+                            <p style="text-transform:uppercase;"><strong></strong><?php echo $view->customer_name;?></p>
+                            <p><?php echo $view->customer_phone;?></p>
+
+                        </div>
+                        <div class="event_date">
+                            <p><strong>Address: </strong><?php echo $view->appointment_address;?></p>
+                            <p><strong>Date: </strong><?php echo $view->appointment_date;?></p>
+                        </div>
+                    </div>
+                    <div class="event_descriptions">
+                        <h4>Description</h4>
+                        <hr>
+                        <p><?php echo $view->notes;?></p>
+                    </div>
+                    
+                    <div class="status">
+                        <?php
+                            $event_status = $view->status;
+                            if($event_status == 1){
+                                echo "<p class='stat' id='complete'><i class='fas fa-flag'></i> Completed</p>";
+                            }elseif($event_status == -1){
+                                echo "<p class='stat cancelled'><i class='fas fa-flag'></i> Cancelled </p>";
+                            }else{
+                        ?>
+                        <button id="eventDone" onclick="eventDone('<?php echo $view->booking_id;?>')">Done <i class="fas fa-thumbs-up"></i></button>
+                        <button id="eventCancelled" onclick="eventCancelled('<?php echo $view->booking_id;?>')">Cancel <i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <?php }; endforeach; }?>            
             </div>
         </section>
     </main>

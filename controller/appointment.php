@@ -23,7 +23,9 @@
         $bookings->execute();
 
         if($bookings){
-            /* echo "<p>You have booked your Appointment <br> We will Get back to you Shortly</p>"; */
+            echo "<script>
+                alert('You have booked your Appointment \n We will Get back to you Shortly');
+                window.open('main.php', '_parent');</script>";
 
             /* send admin mail */
             $subject = "Temix Empire - New Appointment";

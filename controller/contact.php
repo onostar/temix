@@ -18,7 +18,7 @@
             $user_info->bindvalue('email', $user);
             $user_info->execute();
             $view = $user_info->fetch();
-            echo $view->first_name . " " . $view->last_name. " - Search Results";
+            echo $view->first_name . " " . $view->last_name. " - Contact Us";
         ?>
     </title>
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
@@ -40,6 +40,7 @@
         <div class="contact_phone">
             <button class="appointment" id="bookings">Book Appointment</button>
             <p class="text-right"><i class="fas fa-mobile-alt"></i> <span class="call">Call us: </span> +2347041350926</p>
+        </div>
     </section>
     <header>
         <h1 class="logo">
@@ -218,59 +219,32 @@
         </aside>
     </div>
     <main>
-        <section id="searchResults">
-            <?php
-                if(isset($_POST['check_category'])){
-                    $item_search = ucwords(htmlspecialchars(stripslashes($_POST['item_cat'])));
-
-                    $search_query = $connectdb->prepare("SELECT * FROM menu WHERE item_name LIKE '%$item_search%' OR restaurant_name LIKE '%$item_search%' OR item_category LIKE '%$item_search%' ORDER BY item_name");
-                    $search_query->execute();
-                    
-                }
-
-            ?>
-            <h2>Showing results for "<strong><?php echo $item_search?></strong>"</h2>
+        <section id="contactUs">
+            <h2>Get in touch</h2>
             <hr>
-            <div class="results">
-                
-                <?php 
-                    if(!$search_query->rowCount()){
-                        echo "<p class='no_result'>'No result found!'</p>";
-                    }
-                    $shows = $search_query->fetchAll();
-                    foreach($shows as $show):
-                ?>
-                <figure>
-                    <a href="javascript:void(0);" onclick="showItems('<?php echo $show->item_id?>')">
-                        <img src="<?php echo 'items/'.$show->item_foto;?>" alt="featured item">
-                    </a>
-                    <form action="cart.php" method="POST">
-                        <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $show->item_name?>">
-                        <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $show->item_prize?>">
-                        <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $show->restaurant_name?>">
-                        <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
-                        <input type="hidden" id="quantity" name="quantity" value="1">
-                        <figcaption>
-                            <div class="todo">
-                                <p class="first"><?php echo $show->item_name?></p>
-                                <p><?php echo $show->restaurant_name?></p>
-                                <p><?php echo $show->item_category?></p>
-                                <span>₦ <?php echo number_format($show->item_prize)?></span>
-                            </div>
-                            <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
-                        </figcaption>
-                    </form>
-                </figure>
-                
-                <?php endforeach ?>
+            <div class="contact">
+                <div class="contact_us">
+                    <p>We are here to serve you</p>
+                    <p><i class="fas fa-home"></i> For more information, pick ups of your items or to get a physical feel of our work, Kindly visit us at at our head office:<br>
+                    Temix Empire, 124 Jakpa Road by Oru Standard Junction<br>Warri, Delta State</p><br>
+                    <p><i class="fas fa-envelope-open-text"></i> You can also send a mail to: <br>info@temixempire.com<br>sales@temixempire.com</p><br>
+                    <p><i class="fas fa-tty"></i> 07041350926<br>08157985866</p><br><br>
+                    <p>You can also <a class="appointment" href="javascript:void(0);" title="Schedule an appointment">Book an Appointment</a> With us.
+                    
+                </div>
+                <div class="contact_img">
+                    <img src="../images/temix-empire-contact.jpg" alt="Temix Empire contact">
+                </div>
             </div>
+            
+            
         </section>
-
-        
     </main>
+
     <footer>
         <?php include "footer.php"; ?>
     </footer>
+
     <script src="bootstrap.min.js"></script>
     <script src="jquery.js"></script>
     <script src="script.js"></script>

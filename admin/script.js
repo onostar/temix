@@ -1307,7 +1307,7 @@ $(document).ready(function(){
 //search highest selling items with date for admin
 $(document).ready(function(){
     $("#search_highest").click(function(){
-        let  highest_from_date = document.getElementById('highest_from_date').value;
+        let highest_from_date = document.getElementById('highest_from_date').value;
         let highest_to_date = document.getElementById('highest_to_date').value;
         
         //   alert(item + restaurant);
@@ -1349,9 +1349,8 @@ $(document).ready(function(){
 
 //Show events
 function displayEvent(event_id){
-    window.open("view_events.php?event="+event_id, "_parent");
-    // $("#events_info").show();
-    return;
+    window.open("admin.php?event="+event_id, "_parent");
+    $(".summaryReports").hide();
 }
 
 //Confirm Event done
@@ -1364,7 +1363,7 @@ function eventDone(event_id){
 function eventCancelled(event_id){
     window.open("cancel_event.php?event="+event_id, "_parent");
     // $("#events_info").show();
-    return;
+    return false;
 }
 
 //display upload banner1

@@ -234,7 +234,7 @@
                 <nav id="help">
                     <ul>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="contact.php">
                                 <i class="far fa-question-circle"></i>
                                 <div class="note">
                                     <h3>Help center</h3>
@@ -243,7 +243,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="about.php">
                                 <i class="fas fa-street-view"></i>
                                 <div class="note">
                                     <h3>About us</h3>
@@ -356,7 +356,7 @@
             <nav id="help">
                 <ul>
                     <li>
-                        <a href="javascript:void(0);">
+                        <a href="contact.php">
                             <i class="far fa-question-circle"></i>
                             <div class="note">
                                 <h3>Help center</h3>
@@ -365,7 +365,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);">
+                        <a href="about.php">
                             <i class="fas fa-street-view"></i>
                             <div class="note">
                                 <h3>About us</h3>

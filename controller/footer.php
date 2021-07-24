@@ -17,13 +17,13 @@
             </div>
             <div class="lines">
                 <h3>Temix Help lines:</h3>
-                <p>07041350926br>08157985866
+                <p>07041350926<br>08157985866
                 </p>
             </div>
         </div>
         <div class="fone">
             <div class="icons">
-                <i class="fas fa-envelope"></i>
+                <i class="fas fa-envelope-open-text"></i>
             </div>
             <div class="lines">
                 <h3>Emails:</h3>
@@ -107,9 +107,9 @@
 <div class="toTop">
     <a href="#topHeader"><i class="fas fa-chevron-up"></i></a>
 </div>
-<div class="result"></div>
 <!-- Book appointment form -->
 <div class="appointment_page">
+    <div class="result"></div>
         <div id="appointment_page">
             <div id="close">
                 <a href="javascript:void(0)" title="Close"><i class="fas fa-window-close"></i></a>

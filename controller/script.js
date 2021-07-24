@@ -31,7 +31,7 @@ window.onscroll = function(){
 setTimeout(function(){
     $(".main").show();
     $(".loader").hide();
-}, 4000)
+}, 3000)
 //display login on desktop page
 $(document).ready(function(){
     $("#loginDiv").click(function(){
@@ -252,6 +252,15 @@ function displayPopular(){
         document.getElementById("popular").style.display = "none";
     }
 }
+
+//display mission and vision on scroll
+/* function displayMission(){
+    if(document.body.scrollTop > 500 || document.documentElement.scrollTop > 500){
+        document.getElementById("mission_vision").style.display = "block";
+    }else{
+        document.getElementById("mission_vision").style.display = "none";
+    }
+} */
 
 //display to top button{
 function displayTotop(){

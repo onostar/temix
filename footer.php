@@ -24,7 +24,7 @@
             </div>
             <div class="fone">
                 <div class="icons">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope-open-text"></i>
                 </div>
                 <div class="lines">
                     <h3>Emails:</h3>
@@ -81,7 +81,6 @@
     <!-- Book appointment form -->
     <div class="appointment_page">
         <div class="result"></div>
-
             <div id="appointment_page">
                 <div id="close">
                     <a href="javascript:void(0)" title="Close"><i class="fas fa-window-close"></i></a>

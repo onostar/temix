@@ -192,7 +192,7 @@
                     <nav id="help">
                         <ul>
                             <li>
-                                <a href="javascript:void(0);">
+                                <a href="contact.php">
                                     <i class="far fa-question-circle"></i>
                                     <div class="note">
                                         <h3>Help center</h3>
@@ -201,7 +201,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);">
+                                <a href="about.php">
                                     <i class="fas fa-street-view"></i>
                                     <div class="note">
                                         <h3>About us</h3>
@@ -240,7 +240,7 @@
                             <p><?php echo $banner->banner_description;?></p>
                             <div class="links">
                                 <a href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
-                                <a href="gallery.php"><i class="fas fa-photo-video"></i> View Gallery</a>
+                                <a href="gallery.php"><i class="fas fa-photo-video"></i> Gallery</a>
                             </div>
                             
                         </div>
@@ -282,7 +282,7 @@
                             <p><?php echo $banner->banner_description;?></p>
                             <div class="links">
                                 <a href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
-                                <a href="gallery.php"><i class="fas fa-photo-video"></i> View Gallery</a>
+                                <a href="gallery.php"><i class="fas fa-photo-video"></i> Gallery</a>
                             </div>
                             
                         </div>
@@ -303,7 +303,7 @@
                             <p><?php echo $banner->banner_description;?></p>
                             <div class="links">
                                 <a href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
-                                <a href="gallery.php"><i class="fas fa-photo-video"></i> View Gallery</a>
+                                <a href="gallery.php"><i class="fas fa-photo-video"></i> Gallery</a>
                             </div>
                             
                         </div>
@@ -315,7 +315,7 @@
                 <nav id="help">
                     <ul>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="contact.php">
                                 <i class="far fa-question-circle"></i>
                                 <div class="note">
                                     <h3>Help center</h3>
@@ -324,7 +324,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="about.php">
                                 <i class="fas fa-street-view"></i>
                                 <div class="note">
                                     <h3>About us</h3>
@@ -416,7 +416,7 @@
                 <div class="all_items popular_items">
                     <?php
                         /* $select_all = $connectdb->prepare("SELECT menu.item_name, menu.item_category, menu.item_prize, menu.item_foto, menu.item_id, orders.item_name FROM orders, menu WHERE menu.item_name = orders.item_name AND orders.quantity >= 2 GROUP BY orders.item_name"); */
-                        $select_all = $connectdb->prepare("SELECT * FROM menu INNER JOIN orders USING (item_name) WHERE quantity >= 4 GROUP BY item_name");
+                        $select_all = $connectdb->prepare("SELECT * FROM menu RIGHT JOIN orders USING (item_name) WHERE quantity >= 4 GROUP BY item_name");
                         $select_all->execute();
                         $rows = $select_all->fetchAll();
                         foreach($rows as $row):
