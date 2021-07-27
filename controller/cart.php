@@ -44,11 +44,13 @@
             $add_cart->execute();
 
             if($add_cart){
-                echo "<script>alert('".$item_name. "added to cart!')</script>";
+                echo "<script>alert('".$item_name. "added to cart!');
+                window.open('main.php', '_parent');</script>";
                 // $_SESSION['success'] = "$category added Successfully!";
-                header("Location: main.php");
+                // header("Location: main.php");
             }else{
-                echo "<script>alert('Item not added!')</script>";
+                echo "<script>alert('Item not added!');
+                window.open('main.php', '_parent');</script>";
                 // $_SESSION['error'] = "$category not added!";
                 // header("Location: admin.php");
 

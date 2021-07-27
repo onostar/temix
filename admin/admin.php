@@ -206,12 +206,14 @@
                     <table class="sum_table">
                         <thead>
                             <tr>
+                                <td>Date</td>
                                 <td>Total Customers</td>
                                 <td>Total Sales</td>
                             </tr>        
                         </thead>
                         <tbody>
                             <tr>
+                                <td><?php echo date("d-M-Y");?></td>
                                 <td>
                                 <?php 
                                     $get_total_customers = $connectdb->prepare("SELECT item_name FROM orders WHERE order_date = CURDATE() AND order_status = 1 GROUP BY order_number");

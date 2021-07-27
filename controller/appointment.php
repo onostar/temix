@@ -23,16 +23,16 @@
         $bookings->execute();
 
         if($bookings){
-            echo "<script>
-                alert('You have booked your Appointment \n We will Get back to you Shortly');
-                window.open('main.php', '_parent');</script>";
-
             /* send admin mail */
             $subject = "Temix Empire - New Appointment";
             $message = "You have a new Appointment Booking from $customer_name. \n <a href='https://temixempire.com/admin/admin..php'>Click here to view</a>";
             $header = "From: admin@temixempire.com";
             mail("temidayomabel@gmail.com", $subject, $message, $header) or die("Error!");
-            header("Location: main.php");
+
+            echo "<script>
+                alert('You have booked your Appointment. We will Get back to you Shortly');
+                window.open('main.php', '_parent');</script>";
+            // header("Location: main.php");
 
         }else{
             echo "<p class='exist'>Failed to book appointment</p>";

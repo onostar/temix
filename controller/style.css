@@ -1721,6 +1721,7 @@ footer{
 #mission_vision hr{
     width:50px;
     height:4px;
+    background:var(--primaryColor);
     margin:5px auto;
 }
 #mission_vision .mission_vision{
