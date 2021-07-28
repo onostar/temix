@@ -1062,6 +1062,7 @@ main{
     #user_aside .login{
         background:var(--primaryColor);
         color:#fff;
+        color:rgb(27, 226, 209);
     }
     aside #loginDiv{
         background:transparent;

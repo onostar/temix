@@ -1355,13 +1355,21 @@ function displayEvent(event_id){
 
 //Confirm Event done
 function eventDone(event_id){
-    window.open("event_done.php?event="+event_id, "_parent");
+    let event_done = confirm("Are you sure to confirm event", "");
+    if(event_done){
+        window.open("event_done.php?event="+event_id, "_parent");
+    }
+    
     // $("#events_info").show();
     return;
 }
 //Cancel event
 function eventCancelled(event_id){
-    window.open("cancel_event.php?event="+event_id, "_parent");
+    let event_cancel = confirm("Are you sure to cancel event", "");
+    if(event_cancel){
+        window.open("cancel_event.php?event="+event_id, "_parent");
+    }
+    
     // $("#events_info").show();
     return false;
 }

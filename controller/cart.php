@@ -44,7 +44,7 @@
             $add_cart->execute();
 
             if($add_cart){
-                echo "<script>alert('".$item_name. "added to cart!');
+                echo "<script>alert('".$item_name. " added to cart!');
                 window.open('main.php', '_parent');</script>";
                 // $_SESSION['success'] = "$category added Successfully!";
                 // header("Location: main.php");

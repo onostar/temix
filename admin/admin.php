@@ -126,7 +126,7 @@
                             <i class="fas fa-store"></i>
                             <p>
                                 <?php
-                                    $users = $connectdb->prepare("SELECT * FROM appointments");
+                                    $users = $connectdb->prepare("SELECT * FROM appointments WHERE request_date = CURDATE()");
                                     $users->execute();
                                     echo $users->rowCount();
                                 ?>
@@ -653,14 +653,14 @@
                             <td><?php echo $row->customer_name?></td>
                             <td><?php echo $row->service?></td>
                             <td><?php echo $row->appointment_date?></td>
-                            <td>
+                            <td style="text-transform:uppercase">
                                 <?php $order_status = $row->status;
                                 if($order_status == 1){
                                     echo "<p style='color:green'>Done</p>";
                                 }elseif($order_status == -1){
                                     echo "<p style='color:red'>Cancelled</p>";
                                 }else{
-                                    echo "<p style=' color:rgb(167, 199, 50);'>In Review</p>";
+                                    echo "<p style='  color:rgb(89, 92, 92);'>In Review</p>";
                                 }
                                 ?>
                             </td>

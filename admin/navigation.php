@@ -32,6 +32,7 @@
                     <li><a href="javascript:void(0);" id="deleteItem" title="Delete restaurant Items">Delete Item</a></li>
                     <li><a href="javascript:void(0);" id="addStore">Upload Photo</a></li>
                     <li><a href="javascript:void(0);" id="addUser">Upload Video</a></li>
+                    <li><a href="javascript:void(0);" id="viewMedia">Photos and Videos</a></li>
                     <li><a id="customerList"  href="javascript:void(0);">Customer List</a></li>
                     <li><a href="javascript:void(0);" id="uploadBanner">Upload Banners & Ads</a></li>
                 </ul>

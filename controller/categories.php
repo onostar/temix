@@ -223,7 +223,7 @@
                 if(isset($_POST['check_category'])){
                     $item_search = ucwords(htmlspecialchars(stripslashes($_POST['item_cat'])));
 
-                    $search_query = $connectdb->prepare("SELECT * FROM menu WHERE item_name LIKE '%$item_search%' OR restaurant_name LIKE '%$item_search%' OR item_category LIKE '%$item_search%' ORDER BY item_name");
+                    $search_query = $connectdb->prepare("SELECT * FROM menu WHERE item_name LIKE '%$item_search%' OR item_category LIKE '%$item_search%' ORDER BY item_name");
                     $search_query->execute();
                     
                 }
@@ -242,19 +242,17 @@
                 ?>
                 <figure>
                     <a href="javascript:void(0);" onclick="showItems('<?php echo $show->item_id?>')">
-                        <img src="<?php echo 'items/'.$show->item_foto;?>" alt="featured item">
+                        <img src="<?php echo '../items/'.$show->item_foto;?>" alt="featured item">
                     </a>
                     <form action="cart.php" method="POST">
                         <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $show->item_name?>">
                         <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $show->item_prize?>">
-                        <input type="hidden" name="cart_item_restaurant" id="cart_item_restaurant" value="<?php echo $show->restaurant_name?>">
                         <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
                         <input type="hidden" id="quantity" name="quantity" value="1">
                         <figcaption>
                             <div class="todo">
                                 <p class="first"><?php echo $show->item_name?></p>
-                                <p><?php echo $show->restaurant_name?></p>
-                                <p><?php echo $show->item_category?></p>
+                                <p><i class="fas fa-layer-group"></i> <?php echo $show->item_category?></p>
                                 <span>₦ <?php echo number_format($show->item_prize)?></span>
                             </div>
                             <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>

@@ -191,7 +191,7 @@
                             <div class="todo">
                                 <p class="first"><?php echo $show->item_name?></p>
                                 
-                                <p><?php echo $show->item_category?></p>
+                                <p><i class="fas fa-layer-group"></i> <?php echo $show->item_category?></p>
                                 <span>₦ <?php echo number_format($show->item_prize)?></span>
                             </div>
                             
