@@ -20,53 +20,7 @@
         <img src="images/temix_empire_logo2.png" alt="Temix EMpire">
     </div>
     <div class="main">
-        <section class="top_head" id="topHeader">
-            <div class="social_media">
-                <a href="javascript:void(0);" target="_blank" title="Follow us on facebook"><i class="fab fa-facebook"></i></a>   
-                <!-- <a href="javascript:void(0);" target="_blank" title="Follow us on twitter"><i class="fab fa-twitter"></i></a> -->   
-                <a href="javascript:void(0);" target="_blank" title="Follow us on instagram"><i class="fab fa-instagram"></i></a>   
-                <a href="javascript:void(0);" target="_blank" title="Follow us on linkedin"><i class="fab fa-linkedin"></i></a>   
-                <a href="https://wa.me/2348157985866" target="_blank" title="Follow us on whatsapp"><i class="fab fa-whatsapp"></i></a>   
-            </div>
-            <div class="contact_phone">
-                <button class="appointment" id="bookings">Book Appointment</button>
-                <p class="text-right"><i class="fas fa-mobile-alt"></i> <span class="call">Call us:</span> +2347041350926</p>
-            </div>
-        </section>
-        <header>
-            <h1 class="logo">
-                <a href="index.php" title="Temix Empire">
-                    <img src="images/temix_empire_logo1.jpg" alt="Temix Empire" class="img-fluid">
-                </a>
-            </h1>
-            <div class="search">
-                <form class="form-inline" action="search_result.php" method="POST">
-                    <input type="search" name="search_items" placeholder="search items">
-                    <button type="submit" name="search" class="main_searchbtn">Search</button>
-                    <button type="submit" name="search" class="mobilesearchbtn" ><i class="fas fa-search"></i></button>
-                </form>
-                
-            </div>
-            <div class="other_menu">
-                <a href="gallery.php" title="Our Gallery">Gallery</a>
-            </div>
-            <div class="login">
-                <button id="loginDiv"><i class="far fa-user"></i> Login <i class="fas fa-chevron-down"></i></button>
-                <div class="login_option">
-                    <div>
-                        <button id="loginBtn"><a href="registration.php">Login</a></button>
-                        <h3>OR</h3>
-                        <a href="registration.php" id="signupBtn">Create an account</a>
-                    </div>
-                </div>
-            </div>
-            <div class="cart">
-                <a href="javascript:void(0);" onclick="loginFirst();" title="view cart"><i class="fas fa-shopping-cart"></i> Cart <span id="cart_value">0</span></a>
-            </div>
-            <div class="menu_icon">
-                <a href="javascript:void(0)"><i class="fas fa-bars"></i></a>
-            </div>
-        </header>
+        <?php include "header.php";?>
         <p class="successful">
             <?php
                 if(isset($_SESSION['success'])){
@@ -122,107 +76,14 @@
                                 <i class="fas fa-pizza-slice"></i> <input type="submit" value="Other categories" name="check_category">
                             </form>
                         </li>
-                        <li><a class="appointment" href="javascript:void(0);" title="Book for an event"><i class="fas fa-calendar-alt"></i>Book Event</a></li>
+                        <li><a class="appointment" href="javascript:void(0);" title="Book for an event"><i class="far fa-calendar-alt"></i>Book Event</a></li>
                         <li><a href="gallery.php"title="View Media"><i class="fas fa-photo-video"></i>Gallery & Videos</a></li>
-                        <li><a href="contact.php"title="Get in touch with us"><i class="fas fa-address-book"></i>Contact us</a></li>
+                        <li><a href="contact.php"title="Get in touch with us"><i class="far fa-address-book"></i>Contact us</a></li>
                         
                     </ul>
                 </nav>
             </aside>
-            <div id="mobile_menu">
-                
-                <aside id="asideLeft">
-                    <div class="login">
-                        <button id="loginDiv"><i class="far fa-user"></i> Login <i class="fas fa-chevron-down"></i></button>
-                        <div class="login_option">
-                            <div>
-                                <button id="loginBtn"><a href="registration.php">Login</a></button>
-                                <h3>OR</h3>
-                                <a href="registration.php" id="signupBtn">Create an account</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <nav>
-                        <ul>
-                            <li>
-                                <form action="categories.php" method="POST">
-                                    <input type="hidden" name="item_cat" value="ice cream">
-                                    <i class="fas fa-ice-cream"></i> <input type="submit" value="Ice cream" name="check_category">
-                                </form> 
-                            </li>
-                            <li>
-                                <form action="categories.php" method="POST">
-                                    <input type="hidden" name="item_cat" value="snacks">
-                                    <i class="fas fa-hamburger"></i> <input type="submit" value="Snacks" name="check_category">
-                                </form> 
-                            </li>
-                            <li>
-                                <form action="categories.php" method="POST">
-                                    <input type="hidden" name="item_cat" value="bed sheets">
-                                    <i class="fas fa-bed"></i> <input type="submit" value="Beddings" name="check_category">
-                                </form>
-                            </li>
-                            
-                            <li>
-                                <form action="categories.php" method="POST">
-                                    <input type="hidden" name="item_cat" value="small chops">
-                                    <i class="fas fa-cheese"></i> <input type="submit" value="Small Chops" name="check_category">
-                                </form>
-                            </li>
-                            <li>
-                                <form action="categories.php" method="POST">
-                                    <input type="hidden" name="item_cat" value="Cakes">
-                                    <i class="fas fa-birthday-cake"></i> <input type="submit" value="Cakes" name="check_category">
-                                </form>
-                            </li>
-                            <li>
-                                <form action="categories.php" method="POST">
-                                    <input type="hidden" name="item_cat" value="others">
-                                    <i class="fas fa-pizza-slice"></i> <input type="submit" value="Other categories" name="check_category">
-                                </form>
-                            </li>
-                            <li><a class="appointment" href="javascript:void(0);" title="Book for an event"><i class="fas fa-calendar-alt"></i>Book Event</a></li>
-                            <li><a href="gallery.php"title="View Media"><i class="fas fa-photo-video"></i>Gallery & Videos</a></li>
-                            <li><a href="contact.php"title="Get in touch with us"><i class="fas fa-address-book"></i>Contact us</a></li>
-                            
-                        </ul>
-                    </nav>
-                    <hr>
-                    <nav id="help">
-                        <ul>
-                            <li>
-                                <a href="contact.php">
-                                    <i class="far fa-question-circle"></i>
-                                    <div class="note">
-                                        <h3>Help center</h3>
-                                        <p>Ask Temix</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="about.php">
-                                    <i class="fas fa-street-view"></i>
-                                    <div class="note">
-                                        <h3>About us</h3>
-                                        <p>Who we are</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <i class="fas fa-hand-holding-usd"></i>
-                                    <div class="note">
-                                        <h3>Refunds</h3>
-                                        <p>Money back guarantee</p>
-                                    </div>
-                                </a>
-                            </li>                          
-                        </ul>
-                    </nav>
-                </aside>
-                
-            </div>
+            <?php include "mobile_menu.php";?>
             <section id="banner">
                 <div class="slide">
                     <div class="slides">
@@ -239,7 +100,7 @@
                             <h2><?php echo $banner->title;?></h2>
                             <p><?php echo $banner->banner_description;?></p>
                             <div class="links">
-                                <a href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+                                <a onclick="loginFirst()" href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
                                 <a href="gallery.php"><i class="fas fa-photo-video"></i> Gallery</a>
                             </div>
                             
@@ -281,7 +142,7 @@
                             <h2><?php echo $banner->title;?></h2>
                             <p><?php echo $banner->banner_description;?></p>
                             <div class="links">
-                                <a href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+                                <a onclick="loginFirst()" href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
                                 <a href="gallery.php"><i class="fas fa-photo-video"></i> Gallery</a>
                             </div>
                             
@@ -302,7 +163,7 @@
                             <h2><?php echo $banner->title;?></h2>
                             <p><?php echo $banner->banner_description;?></p>
                             <div class="links">
-                                <a href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+                                <a onclick="loginFirst()" href="javascript:void(0);"><i class="fas fa-shopping-cart"></i> Shop Now</a>
                                 <a href="gallery.php"><i class="fas fa-photo-video"></i> Gallery</a>
                             </div>
                             
@@ -386,7 +247,7 @@
                 <h2>Featured Items</h2>
                 <div class="featured">
                     <?php
-                        $select_featured = $connectdb->prepare("SELECT * FROM menu WHERE featured_item = 1 ORDER BY time_created DESC");
+                        $select_featured = $connectdb->prepare("SELECT * FROM menu WHERE featured_item = 1 ORDER BY time_created DESC LIMIT 6");
                         $select_featured->execute();
                         $rows = $select_featured->fetchAll();
                         foreach($rows as $row):
@@ -408,15 +269,16 @@
                     <?php endforeach ?>
                     
                 </div>
-                <button id="view_more">View more</button>
-                <button id="show_less">Show less</button>
+                <!-- <button id="view_more">View more</button>
+                <button id="show_less">Show less</button> -->
             </section>
+            <!-- Popular items -->
             <section id="popular">
-                <h2>Popular Items <i class="fas fa-star"></i><i class="fas fa-star"></i></h2>
+                <h2>Todays Popular Items <i class="fas fa-star"></i><i class="fas fa-star"></i></h2>
                 <div class="all_items popular_items">
                     <?php
-                        /* $select_all = $connectdb->prepare("SELECT menu.item_name, menu.item_category, menu.item_prize, menu.item_foto, menu.item_id, orders.item_name FROM orders, menu WHERE menu.item_name = orders.item_name AND orders.quantity >= 2 GROUP BY orders.item_name"); */
-                        $select_all = $connectdb->prepare("SELECT * FROM menu RIGHT JOIN orders USING (item_name) WHERE quantity >= 4 GROUP BY item_name");
+                        $select_all = $connectdb->prepare("SELECT menu.item_name, menu.item_category, menu.item_prize, menu.item_foto, menu.item_id, orders.item_name, orders.quantity FROM orders, menu WHERE menu.item_name = orders.item_name AND orders.order_date = CURDATE() GROUP BY orders.item_name HAVING SUM(orders.quantity) >= 3 ORDER BY orders.delivery_date LIMIT 6");
+                        
                         $select_all->execute();
                         $rows = $select_all->fetchAll();
                         foreach($rows as $row):
@@ -438,14 +300,42 @@
                     <?php endforeach ?>
                     
                 </div>
-                <button id="more_popular">View more</button>
-                <button id="less_popular">Show less</button>
+                <!-- <button id="more_popular">View more</button>
+                <button id="less_popular">Show less</button> -->
+            </section>
+            <!-- daily deals -->
+            <section id="daily_deals">
+                <h2>Don't miss out on these deals!</h2>
+                <div class="deals">
+                    <?php
+                        $get_deals = $connectdb->prepare("SELECT * FROM menu WHERE daily_deal = 1 ORDER BY time_created DESC");
+                        $get_deals->execute();
+                        $deals = $get_deals->fetchAll();
+                        foreach($deals as $deal):
+                    ?>
+                    <figure>
+                        <a href="javascript:void(0);" onclick="loginFirst()">
+                            <div class="deals_img">
+                                <img src="<?php echo "items/" . $deal->item_foto?>" alt="<?php echo $deal->item_name;?>">
+                            </div>
+                            <figcaption>
+                                <div class="restaurant_logo">
+                                    <img src="images/temix_empire_logo2.png" alt="Temix empire">
+                                </div>
+                                <p><?php echo $deal->item_name?></p>
+                                <p class="item_price">₦ <?php echo number_format($deal->item_prize)?></p>
+                                <p class="previous_price">₦ <?php echo number_format($deal->previous_price)?></p>
+                            </figcaption>
+                        </a>
+                    </figure>
+                    <?php endforeach?>
+                </div>
             </section>
             <section id="all_items">
-                <h2>Find more items</h2>
+                <h2>Check out more collections</h2>
                 <div class="all_items">
                     <?php
-                        $select_all = $connectdb->prepare("SELECT * FROM menu ORDER BY time_created DESC");
+                        $select_all = $connectdb->prepare("SELECT * FROM menu ORDER BY time_created DESC LIMIT 6");
                         $select_all->execute();
                         $rows = $select_all->fetchAll();
                         foreach($rows as $row):
@@ -467,8 +357,8 @@
                     <?php endforeach ?>
                     
                 </div>
-                <button id="more">View more</button>
-                <button id="less">Show less</button>
+                <button onclick="loginFirst()">View more <i class="fas fa-angle-double-right"></i></button>
+                
             </section>
             
         </main>

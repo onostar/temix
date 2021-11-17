@@ -28,7 +28,7 @@
                 </div>
                 <div class="lines">
                     <h3>Emails:</h3>
-                    <p>sales@foodies.com, <br> info@foodies.com
+                    <p>sales@temixempire.com, <br> info@temixempire.com
                     </p>
                 </div>
             </div>
@@ -40,7 +40,7 @@
             </div>
             <hr>
             <h3>Be the first to get latest updates</h3>
-            <form action="subscribe.php" method="POST" id="subscriptions">
+            <form action="controller/subscribe.php" method="POST" id="subscriptions">
                 <input type="email" id="subscribe_email" name="subscribe_email" placeholder="Enter email">
                 <button type="submit" id="subscribe" name="subscribe">Subscribe <i class="fas fa-paper-plane"></i></button>
             </form>
@@ -65,15 +65,15 @@
                 <li><a href="javascript:void(0);"><i class="fas fa-bed"></i>Beddings</a> </li>
                 <li><a href="javascript:void(0);"><i class="fas fa-cheese"></i>Small Chops</a></li>
                 <li><a href="javascript:void(0);"><i class="fas fa-birthday-cake"></i>Cakes</a></li>
-                <li><a href="javascript:void(0);"><i class="fas fa-pizza-slice"></i>Other Categories</a></li>
+                <li><a href="#"><i class="fas fa-pizza-slice"></i>Other Categories</a></li>
                 <a class="appointment" href="javascript:void(0);"><i class="fas fa-calendar-alt"></i> Book an Event</a>
-                <li><a href="javascript:void(0);"><i class="fas fa-photo-video"></i>Videos</a></li>
-                <li><a href="javascript:void(0);"><i class="fas fa-address-book"></i>Contact us</a></li>
+                <li><a href="gallery.php"><i class="fas fa-photo-video"></i>Videos</a></li>
+                <li><a href="contact.php"><i class="fas fa-address-book"></i>Contact us</a></li>
             </ul>
         </div>
     </div>
     <div id="secondary_footer">
-        <p>All Rights Reserved. &copy; Foodies <?php echo date("Y"); ?>. Powered by <a href="https://onostar.github.io/onostar-media" title="Onostar media" target="_blank">Onostar Media</a></p>
+        <p>All Rights Reserved. &copy; Temix <?php echo date("Y"); ?>. Powered by <a href="https://onostar.github.io/onostar-media" title="Onostar media" target="_blank">Onostar Media</a></p>
     </div>
     <div class="toTop">
         <a href="#topHeader"><i class="fas fa-chevron-up"></i></a>
@@ -126,10 +126,9 @@
                         <div class="data" id="textarea">
                             <textarea name="notes" id="notes" rows="5" placeholder="Add more information/description of your Event"></textarea>
                         </div>
-                        <div class="data">
-                            <button type="submit" id="book" name="book">Book Appointment <i class="fas fa-paper-plane"></i></button>
-                        </div>
+                        
                     </div>
+                    <button type="submit" id="book" name="book">Book Appointment <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
