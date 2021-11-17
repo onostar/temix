@@ -17,6 +17,7 @@ body{
     height:100vh;
     top:0;
     left:0;
+    width:2000px;
     /* color:rgb(167, 199, 50) */
 }
 #mainBody{
@@ -192,8 +193,12 @@ header i{
     color:#fff;
     padding:10px 5px;
 }
-.menu_icon{
+/* .menu_icon{
     display: none;
+} */
+.menu_icon a{
+    color:#fff;
+    font-size:1.8rem;
 }
 main{
     position:absolute;
@@ -279,6 +284,12 @@ main{
     height:100%;
     align-items:center;
 }
+.navs{
+    display:none;
+}
+#mobile_menu{
+    display:none;
+}
 .admin_main aside nav h3{
     font-size:1rem;
     color: var(--otherColor);
@@ -296,6 +307,7 @@ main{
     width:100%;
 }
 .admin_main aside nav ul li{
+    /* display:flex; */
     list-style: none;
     border-bottom:1px solid rgba(102, 100, 100, .4);
     width:100%;
@@ -549,6 +561,9 @@ main{
     animation:.3s drop 1;
     animation-fill-mode: forwards;
 }
+.displays{
+    display:none;
+}
 @keyframes drop{
     0%{
         transform:translateY(100%);
@@ -610,24 +625,49 @@ main{
     background:#fff;
 }
 .management table tbody tr:hover, .management table tbody tr:focus{
-    background:rgba(156, 155, 155, 0.4);;
+    background:rgba(156, 155, 155, 0.4);
 }
 .management table tbody tr td{
     border:1px solid rgba(156, 155, 155, 0.4);
     margin:0;
 }
+.management table tbody tr .prices{
+    position:relative;
+}
 .management table tbody tr .prices form{
-    width:100%;
+    position:absolute;
+    top:0;
+    background:#aaa6a6;
+    padding:5px;
+    border-radius:5px;
+    left:30%;
+    width:auto;
+    display:none;
+    animation:.3s showForm 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+@keyframes showForm{
+    100%{
+        top:-100%;
+    }
 }
 .management table tbody tr .prices form input{
     padding:5px;
-    background:transparent;
-    border:none;
+    background:#fff;
+    border:1px solid rgb(63, 62, 62);
     border-radius:5px;
+    width:50%;
 }
 .management table tbody tr .prices form button{
     background:green;
-    border-radius:50%;
+    border-radius:5px;
+    margin:5px;
+}
+.management table tbody tr .prices form a{
+    background:transparent; 
+    color:red; 
+    font-size:1.5rem;
 }
 #priceTable, #featuredTable{
     background:rgba(48, 158, 209, .1);
@@ -1062,7 +1102,7 @@ main{
     #user_aside .login{
         background:var(--primaryColor);
         color:#fff;
-        color:rgb(27, 226, 209);
+        
     }
     aside #loginDiv{
         background:transparent;

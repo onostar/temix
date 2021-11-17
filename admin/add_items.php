@@ -30,9 +30,9 @@
         $check_user->execute();
 
         if($check_user->rowCount() > 0){
-            /* $_SESSION['error'] = "$item_name already Exists!";
-            header("Location: admin.php"); */
-            echo "<p class='exist'><span>" . $item_name . "</span> already Exists!</p>";
+            $_SESSION['error'] = "<strong>'$item_name'</strong> already Exists!";
+            header("Location: admin.php");
+            // echo "<p class='exist'><span>" . $item_name . "</span> already Exists!</p>";
 
         }else{
             if(move_uploaded_file($_FILES['item_foto']['tmp_name'], $items)){

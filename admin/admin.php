@@ -151,7 +151,7 @@
                 </div> 
             </div>
             <!-- Dashboard Reports -->
-            <div class="summaryReports">
+            <div class="summaryReports" id="summaryReports">
                 <!-- Graphical representation -->
                 <div class="customers_attended" id="upcomingEvents">
                     <h3>Upcoming Events</h3>
@@ -177,7 +177,7 @@
                                 <td><?php echo $n?></td>
                                 <td><?php echo $event->customer_name;?></td>
                                 <td><?php echo $event->service;?></td>
-                                <td><?php echo $event->appointment_date;?></td>
+                                <td><?php echo date("jS M, Y", strtotime($event->appointment_date));?></td>
                             </tr>
                         </tbody>
                         <?php 
@@ -195,17 +195,17 @@
                 </div>
                 <!-- total customers -->
                 <div class="customers_attended">
-                    <h3>Daily Encounters</h3>
+                    <h3>Monthly Encounters</h3>
                     <?php
-                        $get_customers = $connectdb->prepare("SELECT SUM(item_price) AS total_sales FROM orders WHERE order_status = 1 AND order_date = CURDATE()");
+                        $get_customers = $connectdb->prepare("SELECT SUM(item_price) AS total_sales, CURDATE() AS daily_date FROM orders WHERE order_status = 1 AND order_date = CURDATE()");
                         $get_customers->execute();
-                        
+                        $sn = 1;
                         $customers = $get_customers->fetchAll();
                         foreach($customers as $customer):
                     ?>
                     <table class="sum_table">
                         <thead>
-                            <tr>
+                            <tr>                        <td>S/N</td>
                                 <td>Date</td>
                                 <td>Total Customers</td>
                                 <td>Total Sales</td>
@@ -213,7 +213,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><?php echo date("d-M-Y");?></td>
+                                <td><?php echo $sn?></td>
+                                <td><?php echo date("jS M, Y", strtotime($customer->daily_date));?></td>
                                 <td>
                                 <?php 
                                     $get_total_customers = $connectdb->prepare("SELECT item_name FROM orders WHERE order_date = CURDATE() AND order_status = 1 GROUP BY order_number");
@@ -224,12 +225,12 @@
                                 <td><?php echo "₦ ". number_format( $customer->total_sales, 2);?></td>
                             </tr>
                         </tbody>
-                        <?php endforeach;?>
+                        <?php $sn++; endforeach;?>
                     </table>
                 </div>
             </div>
             <!-- Upload Videos -->
-            <div id="createUser">    
+            <div id="createUser" class="displays">    
                 <div class="info"></div>
                 <div class="add_user_form">
                     <h3>Upload Videos to Gallery</h3>
@@ -252,7 +253,7 @@
                 </div>
             </div>
             <!-- Upload Photo -->
-            <div id="addRestaurant">
+            <div id="addRestaurant" class="displays">
                 <div class="info"></div>
                 <div class="add_user_form">
                     <h3>Upload Photos to Gallery</h3>
@@ -277,7 +278,7 @@
             <!-- Upload Banner and Adverts -->
             <?php include "banner_ads.php";?>
             <!-- add categories -->
-            <div id="addCategories">
+            <div id="addCategories" class="displays">
                 <div class="info"></div>
                 <div class="add_user_form">
                     <h3>Add Item Category</h3>
@@ -292,7 +293,7 @@
                 </div>
             </div>
             <!-- add items -->
-            <div id="addItems">
+            <div id="addItems" class="displays">
                 <div class="info"></div>
                 <div class="add_user_form">
                     <h3>Add items to Store</h3>
@@ -344,7 +345,7 @@
             </div>
             
             <!-- delete items -->
-            <div id="deleteItems">
+            <div id="deleteItems" class="displays">
                 <div class="info"></div>
                 <div class="add_user_form">
                     <h3>Delete Item from Inventory</h3>
@@ -371,8 +372,31 @@
                 </div>
             </div>
             
+            <!-- Send broadcast message -->
+            <div id="broadcasts" class="displays">
+                <div class="info"></div>
+                <div class="add_user_form">
+                    <h3>Send Broadcast Message</h3>
+                    <form method="POST">
+                        <div class="inputs">
+                            <div class="data">
+                                <label for="subject">Subject</label><br>
+                                <input type="text" name="subject" id="subject" placeholder="Message title" required>
+                            </div>
+                            
+                        </div>
+                        <div class="inputs">
+                            <div class="data" style="width:100%;">
+                                <label for="broadcast_message">Message</label><br>
+                                <textarea name="broadcast_message" id="broadcast_message" cols="50" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" id="send_broadcast">Send Broadcast <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
             <!-- menu items -->
-            <div id="menuList" class="management">
+            <div id="menuList" class="management displays">
                 <h3>Item List with Price</h3>
                 <hr>
                 <div class="search">
@@ -412,7 +436,7 @@
                 </table>
             </div>
             <!-- modify price list -->
-            <div id="priceList" class="management">
+            <div id="priceList" class="management displays">
                 <h3>Modify Item Price</h3>
                 <hr>
                 <div class="info"></div>
@@ -444,9 +468,12 @@
                             
                             <td><?php echo $row->item_name?></td>
                             <td class="prices">
-                                <form method="POST" action="change_price.php">
+                                <a href="javascript:void(0)" data-form="check<?php echo $row->item_id?>" class="each_prices"><?php echo $row->item_prize;?></a>
+                                <form method="POST" id="check<?php echo $row->item_id?>" class="priceForm" action="change_price.php">
                                     <input type="hidden" name="item_id" id="item_id" value="<?php echo $row->item_id?>">
-                                    <input type="text" name="item_prize" id="item_prize" title="Click to edit price" value="<?php echo $row->item_prize;?>"><button type="submit" name="change_prize" id="changePrize"><i class="fas fa-thumbs-up"></i></button>
+                                    <input type="hidden" name="old_prize" id="old_prize" value="<?php echo $row->item_prize?>">
+                                    <input type="text" name="item_prize" id="item_prize" title="Click to edit price" value="<?php echo $row->item_prize;?>"><button type="submit" name="change_prize" id="changePrize" class="changePrizes"><i class="fas fa-check"></i></button>
+                                    <a href="javascript:void(0)" class="closeForm"><i class="fas fa-window-close"></i></a>
                                 </form>
                             </td>
                         </tr>
@@ -457,7 +484,7 @@
             </div>
             
             <!-- featured items -->
-            <div id="featuredItems" class="management">
+            <div id="featuredItems" class="management displays">
                 <div class="info"></div>
                 <div class="add_user_form" id="addFeatured">
                     <h3 style="color:#fff;">Add featured items</h3>
@@ -525,8 +552,77 @@
                     </table>
                 </div>
             </div>
+            <!-- daily deals items -->
+            <div id="dailyDealsItems" class="management displays">
+                <div class="info"></div>
+                <div class="add_user_form" id="addFeatured">
+                    <h3 style="color:#fff;">Add items to daily deals</h3>
+                    <form method="POST"  id="deleteItemForm">
+                        <div class="inputs">
+                            
+                            <div class="data">
+                                <label for="itemName">Select Item</label><br>
+                                <select name="dealItem" id="dealItem" required>
+                                    
+                                    <option value="" selected>Select item</option>
+                                    <?php
+                                        $get_featured = $connectdb->prepare("SELECT * FROM menu ORDER BY item_name");
+                                        $get_featured->execute();
+                                        $items = $get_featured->fetchAll();
+                                        foreach($items as $item):
+                                    ?>
+                                    <option value="<?php echo $item->item_id;?>"><?php echo $item->item_name;?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" id="add_deal" name="add_deal">Add item <i class="fas fa-plus"></i></button>
+                    </form>
+                </div>
+                <h3>Temix Daily Deals</h3>
+                <hr>
+                <!-- <div class="search">
+                    <input type="search" id="searchUsers" placeholder="Enter keyword">
+                </div> -->
+                <div class="newTable dealTable">
+                    <table id="featuredTable">
+                    
+                        <thead>
+                            <tr>
+                                <td>S/N</td>
+                                
+                                <td>Item name</td>
+                                <td>Item price</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+
+                        <?php
+                            $n = 1;
+                            $select_user = $connectdb->prepare("SELECT * FROM menu WHERE daily_deal = 1 ORDER BY item_name");
+
+                            $select_user->execute();
+                            
+                            $rows = $select_user->fetchAll();
+                            foreach($rows as $row):
+                        ?>
+                        <tbody>
+                            <tr>
+                                <td><?php echo $n?></td>
+                                
+                                <td><?php echo $row->item_name?></td>
+                                <td><?php echo number_format($row->item_prize);?></td>
+                                <td><button style="background:transparent; border:none; width:80%; margin:0 auto;" title="remove from featured" onclick="removeDeal('<?php echo $row->item_id?>')"><i class="fas fa-trash" style="color:red; font-size:1.3rem; text-align:center;" ></i></button></td>
+                            </tr>
+                            
+                        </tbody>
+                        <?php $n++; endforeach;?>
+                        
+                    </table>
+                </div>
+            </div>
             <!-- cutomer list -->
-            <div id="customers" class="management">
+            <div id="customers" class="management displays">
                 <h3>List of Customers</h3>
                 <hr>
                 <div class="search">
@@ -568,7 +664,7 @@
                 </table>
             </div>
             <!-- manage orders -->
-            <div id="orderList" class="management">
+            <div id="orderList" class="management displays">
                 <h3>Manage pending order</h3>
                 <hr>
                 <div class="search">
@@ -605,7 +701,7 @@
                             <td><?php echo $row->quantity?></td>
                             <td>₦ <?php echo number_format($row->item_price)?></td>
                              <!-- <td><?php echo $row->restaurant?></td> -->
-                            <td><?php echo $row->order_date?></td>
+                            <td><?php echo date("jS M, Y", strtotime($row->order_date))?></td>
                             <td><button style="background:transparent; border:none; margin:0 auto;" title="Dispense Item" onclick="dispenseItem('<?php echo $row->order_id?>')"><i class="fas fa-truck" style="color:green; font-size:1.2rem;" ></i></button><button style="background:transparent; border:none; margin:0 auto;" title="Cancel Order" onclick="cancelOrder('<?php echo $row->order_id?>')"><i class="fas fa-plane-slash" style="color:red; font-size:1.2rem;" ></i></button></td>
                         </tr>
                         
@@ -621,7 +717,7 @@
             ?>
             </div>
             <!-- Events List-->
-            <div id="userList" class="management">
+            <div id="userList" class="management displays">
                 <h3>Events & Appointments</h3>
                 <hr>
                 <div class="search">
@@ -652,7 +748,7 @@
                             <td style="text-align:center;"><button style="padding:5px 10px; background:#fff; color:rgb(77, 74, 74); box-shadow:2px 2px 2px var(--secondaryColor);" title="Click to View Event" onclick="displayEvent('<?php echo $row->booking_id;?>');"><?php echo $n?></button></td>
                             <td><?php echo $row->customer_name?></td>
                             <td><?php echo $row->service?></td>
-                            <td><?php echo $row->appointment_date?></td>
+                            <td><?php echo date("jS M, Y", strtotime($row->appointment_date))?></td>
                             <td style="text-transform:uppercase">
                                 <?php $order_status = $row->status;
                                 if($order_status == 1){
@@ -674,7 +770,7 @@
             
 
             <!-- successful deliveries list -->
-             <div id="deliveryList" class="management">
+             <div id="deliveryList" class="management displays">
                 <div class="select_date">
                     <form action="search_date_admin.php" method="POST">
                         <div class="from_to_date">
@@ -755,7 +851,7 @@
                 </div>
             </div>
             <!-- cancelled deliveries list -->
-            <div id="cancelledDeliveries" class="management">
+            <div id="cancelledDeliveries" class="management displays">
                 <div class="select_date">
                     <form action="search_cancelled_date.php" method="POST">
                         <div class="from_to_date">
@@ -836,7 +932,7 @@
                 </div>
             </div>
             <!-- Subscriber list -->
-            <div id="subscribers" class="management">
+            <div id="subscribers" class="management displays">
                 <h3>List of Subscribers</h3>
                 <hr>
                 <div class="search">
@@ -876,7 +972,7 @@
                 </table>
             </div>
             <!-- Highest/Lowest Selling items list -->
-            <div id="highestSellingItems" class="management">
+            <div id="highestSellingItems" class="management displays">
                 <div class="select_date">
                     <form action="search_highest.php" method="POST">
                         <div class="from_to_date">
@@ -920,15 +1016,22 @@
                     
                             $rows = $select_items->fetchAll();
                             foreach($rows as $row):
+                                
                         ?>
                         <tbody>
                             <tr>
                                 <td style="text-align:center;"><?php echo $n?></td>
                                 <td><?php echo $row->item_name?></td>
                                 <td style="text-align:center;"><?php echo $row->total_quantity?></td>
-                                <td>₦ <?php echo number_format($row->item_price, 2)?></td>
+                                <td>₦ <?php $get_price = $connectdb->prepare("SELECT * FROM menu WHERE item_name = :item_name");
+                                $get_price->bindvalue("item_name", $row->item_name);
+                                $get_price->execute();
+                                $prices = $get_price->fetchAll();
+                                foreach($prices as $price){
+                                    echo number_format($price->item_prize, 2);
+                                }?></td>
                                 <td>₦ <?php echo number_format($row->total_amount, 2)?></td>
-                                <td><?php echo $row->delivery_date?></td>
+                                <td><?php echo date("jS M, Y", strtotime($row->delivery_date))?></td>
                                 
                             </tr>
                             
@@ -957,11 +1060,11 @@
                 </div>
             </div>
             <!-- Profile -->
-            <div id="account" class="management">
+            <div id="account" class="management displays">
                 <?php include "profile.php";?>
             </div>
             <!-- Event info -->
-            <div class="management" id="events_info">
+            <div class="management displays" id="events_info">
                 <?php
                     if(isset($_GET['event'])){
                         $booking_id = $_GET['event'];

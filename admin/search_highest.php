@@ -42,10 +42,18 @@
         <tr>
             <td style="text-align:center;"><?php echo $n?></td>
             <td><?php echo $row->item_name?></td>
-            <td style="text-align:center;"><?php echo $row->total_quantity?></td>
-            <td>₦ <?php echo number_format($row->item_price, 2)?></td>
+            <td>₦ <?php 
+                $get_price = $connectdb->prepare("SELECT * FROM menu WHERE item_name = :item_name");
+                $get_price->bindvalue("item_name", $row->item_name);
+                $get_price->execute();
+                $prices = $get_price->fetchAll();
+                foreach($prices as $price){
+                    echo number_format($price->item_prize, 2);
+                }
+                ?>
+            </td>
             <td>₦ <?php echo number_format($row->total_amount, 2)?></td>
-            <td><?php echo $row->delivery_date?></td>
+            <td><?php echo date("jS M, Y", strtotime($row->delivery_date))?></td>
             
         </tr>
         

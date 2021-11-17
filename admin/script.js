@@ -3,11 +3,12 @@ $(document).ready(function(){
     $(".menu_icon").click(function(){
         $("aside").toggle();
     });
-    // $("#contents").click(function(){
-    //     $("aside").hide();
+    $("#contents").click(function(){
+        $("aside").hide();
         
-    // })
+    })
 })
+
 //display profile
 $(document).ready(function(){
     $(".signupBtn").click(function(){
@@ -59,7 +60,7 @@ $(document).ready(function(){
     })
 })
 /* toggle admin menu */
-$(document).ready(function(){
+/* $(document).ready(function(){
     $("#nav1").click(function(){
         $("#nav1Menu").toggle();
         $("#nav2Menu").hide();
@@ -90,8 +91,22 @@ $(document).ready(function(){
         $("#nav1Menu").hide();
         $("#nav2Menu").hide();
     });
-});
+}); */
 
+function showMenu(menu){
+    document.querySelectorAll(".navs").forEach(nav => {
+        nav.style.display = "none";
+    })
+    $(`#${menu}`).toggle();
+}
+//function to get menu buttons
+document.addEventListener("DOMContentLoaded", function(){
+    document.querySelectorAll(".menus").forEach(menu => {
+        menu.onclick = function(){
+            showMenu(this.dataset.menu);
+        }
+    })
+})
 /* toggle login on desktop*/
 $(document).ready(function(){
     $("#loginDiv").click(function(){
@@ -106,202 +121,7 @@ $(document).ready(function(){
     });
 });
 
-/* display create users */
-$(document).ready(function(){
-    $("#addUser").click(function(){
-        $("#createUser").show();
-        $("#dashboard").hide();
-        $("#addRestaurant").hide();
-        $("#addCategories").hide();
-        $("#addItems").hide();
-        $("#disableUsers").hide();
-        $("#deleteItems").hide();
-        $("#restaurantList").hide();
-        $("#menuList").hide();
-        $("#priceList").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
 
-    });
-});
-/* display add restuarant */
-$(document).ready(function(){
-    $("#addStore").click(function(){
-        $("#addRestaurant").show();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#addCategories").hide();
-        $("#addItems").hide();
-        $("#disableUsers").hide();
-        $("#deleteItems").hide();
-        $("#restaurantList").hide();
-        $("#menuList").hide();
-        $("#priceList").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-        
-    });
-});
-/* display add categories */
-$(document).ready(function(){
-    $("#addCat").click(function(){
-        $("#addCategories").show();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#addItems").hide();
-        $("#disableUsers").hide();
-        $("#deleteItems").hide();
-        $("#restaurantList").hide();
-        $("#menuList").hide();
-        $("#priceList").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display add items */
-$(document).ready(function(){
-    $("#addMenu").click(function(){
-        $("#addItems").show();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#disableUsers").hide();
-        $("#deleteItems").hide();
-        $("#restaurantList").hide();
-        $("#menuList").hide();
-        $("#priceList").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display disableUsers */
-$(document).ready(function(){
-    $("#disableUser").click(function(){
-        $("#disableUsers").show();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#deleteItems").hide();
-        $("#restaurantList").hide();
-        $("#menuList").hide();
-        $("#priceList").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display deleteItems*/
-$(document).ready(function(){
-    $("#deleteItem").click(function(){
-        $("#deleteItems").show();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#restaurantList").hide();
-        $("#menuList").hide();
-        $("#priceList").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display restaurants*/
-$(document).ready(function(){
-    $("#showRestaurants").click(function(){
-        $("#restaurantList").show();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#menuList").hide();
-        $("#priceList").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-        
-    });
-});
 /* display appointments from card2*/
 $(document).ready(function(){
     $("#card2").click(function(){
@@ -328,353 +148,7 @@ $(document).ready(function(){
         $(".summaryReports").hide();
         $("#events_info").hide();
         $("#addBanner").hide();
-
-    });
-});
-/* display customers from card2 for clients*/
-$(document).ready(function(){
-    $(".cust_cards").click(function(){
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#menuList").hide();
-        $("#priceList").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#customers").show();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display menu items*/
-$(document).ready(function(){
-    $("#showMenus").click(function(){
-        $("#menuList").show();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#priceList").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display modify price*/
-$(document).ready(function(){
-    $("#modifyPrice").click(function(){
-        $("#priceList").show();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#userList").hide();
-        $("#featuredItems").hide();
-        $("#orderList").hide();
-        $("#customers").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display users list*/
-$(document).ready(function(){
-    $("#showUsers").click(function(){
-        $("#userList").show();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#featuredItems").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display customers list*/
-$(document).ready(function(){
-    $("#customerList").click(function(){
-        $("#customers").show();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#orderList").hide();
-        $("#featuredItems").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display customers list*/
-$(document).ready(function(){
-    $("#customerList").click(function(){
-        $("#customers").show();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#orderList").hide();
-        $("#featuredItems").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display subscriber list*/
-$(document).ready(function(){
-    $("#subscriberList").click(function(){
-        $("#subscribers").show();
-        $("#customers").hide();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#orderList").hide();
-        $("#featuredItems").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display featured items*/
-$(document).ready(function(){
-    $("#featured").click(function(){
-        $("#featuredItems").show();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#deliveryList").hide();
-        $("#orderList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display ordered items*/
-$(document).ready(function(){
-    $("#orders").click(function(){
-        $("#orderList").show();
-        $("#featuredItems").hide();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#customers").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display successfully delivered items*/
-$(document).ready(function(){
-    $("#deliveries").click(function(){
-        $("#deliveryList").show();
-        $("#orderList").hide();
-        $("#featuredItems").hide();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#customers").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display cancelled order items*/
-$(document).ready(function(){
-    $("#cancelled").click(function(){
-        $("#cancelledDeliveries").show();
-        $("#deliveryList").hide();
-        $("#orderList").hide();
-        $("#featuredItems").hide();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#customers").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
-
-    });
-});
-/* display Highest/Lowest Selling items*/
-$(document).ready(function(){
-    $("#highestItems").click(function(){
-        $("#highestSellingItems").show();
-        $("#deliveryList").hide();
-        $("#orderList").hide();
-        $("#featuredItems").hide();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#customers").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
+        $("#dailyDealsItems").hide();
 
     });
 });
@@ -705,37 +179,11 @@ $(document).ready(function(){
         $(".summaryReports").hide();
         $("#events_info").hide();
         $("#addBanner").hide();
+        $("#dailyDealsItems").hide();
 
     });
 });
-/* display declined orders on clients from card3*/
-$(document).ready(function(){
-    $("#clientCard3").click(function(){
-        $("#cancelledDeliveries").show();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#customers").hide();
-        $("#orderList").hide();
-        $("#deliveryList").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();        
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-        $("#addBanner").hide();
 
-    });
-});
 /* display order list from card1*/
 $(document).ready(function(){
     $("#card1").click(function(){
@@ -762,38 +210,73 @@ $(document).ready(function(){
         $(".summaryReports").hide();
         $("#events_info").hide();
         $("#addBanner").hide();
+        $("#dailyDealsItems").hide();
+
     });
 });
-/* display add banners and advert*/
+
+/* new way to toggle different menu on the page */
+function showPage(page){
+    //hide all pages when one displays
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("summaryReports").style.display = "none";
+    document.querySelectorAll('.displays').forEach(div =>{
+        div.style.display = "none";
+    });
+    document.querySelector(`#${page}`).style.display = "block";
+}
+//make links clickable to get to its respective page
+document.addEventListener("DOMContentLoaded", function(){
+    document.querySelectorAll(".page_navs").forEach(navs => {
+        navs.onclick = function(){
+            showPage(this.dataset.page);
+        }
+    })
+})
+
+//display change price form
+function displayPriceForm(form){
+    document.querySelectorAll(".priceForm").forEach(forms=>{
+        forms.style.display = "none";
+    })
+    document.querySelector(`#${form}`).style.display = "block";
+
+}
+//display price to change for individual item
+document.addEventListener("DOMContentLoaded",function(){
+    let prices = document.querySelectorAll(".each_prices");
+    prices.forEach(price =>{
+        price.onclick = function(){
+            displayPriceForm(this.dataset.form);
+            // console.log(this.dataset.form);
+        }
+    })
+})
+//close price form
 $(document).ready(function(){
-    $("#uploadBanner").click(function(){
-        $("#addBanner").show();
-        $("#orderList").hide();
-        $("#featuredItems").hide();
-        $("#userList").hide();
-        $("#priceList").hide();
-        $("#menuList").hide();
-        $("#restaurantList").hide();
-        $("#deleteItems").hide();
-        $("#disableUsers").hide();
-        $("#addItems").hide();
-        $("#addCategories").hide();
-        $("#addRestaurant").hide();
-        $("#dashboard").hide();
-        $("#createUser").hide();
-        $("#userSummary").hide();
-        $("#customers").hide();
-        $("#deliveryList").hide();
-        $("#cancelledDeliveries").hide();
-        $("#account, .profile_details").hide();
-        $("#subscribers").hide();
-        $("#highestSellingItems").hide();
-        $(".summaryReports").hide();
-        $("#events_info").hide();
-
-    });
-});
-
+    $(".closeForm").click(function(){
+        $(".priceForm").hide();
+    })
+})
+/* change price without refresh */
+$(document).ready(function(){
+    $("#changePrize").click(function(){
+        let item_prize = document.getElementById('item_prize').value;
+        let old_prize = document.getElementById('old_prize').value;
+        let item_id = document.getElementById('item_id').value;
+        $.ajax({
+            type: "POST",
+            url: "change_price.php",
+            data: {item_prize:item_prize, old_prize:old_prize, item_id:item_id},
+            success: function(response){
+                $(".each_prices").val(response);
+                $(".priceForm").hide();
+            }
+        })
+    return false;
+    })
+    
+})
 // create categories
  $(document).ready(function(){
     $("#add_categories").click(function(){
@@ -1088,26 +571,9 @@ $(document).ready(function(){
     });
 })
 
-/* change price without refresh */
-$(document).ready(function(){
-    $("#changePrize").click(function(){
-        let item_prize = document.getElementById('item_prize').value;
-        let item_id = document.getElementById('item_id').value;
-        $.ajax({
-            type: "POST",
-            url: "change_price.php",
-            data: {item_prize:item_prize, item_id:item_id},
-            success: function(response){
-                $("#item_id").val(response);
-                // $("#item_id").fade();
-            }
-        })
-    return false;
-    })
-    
-})
+
 /* change price without refresh for users*/
-$(document).ready(function(){
+/* $(document).ready(function(){
     $("#changePrizeUser").click(function(){
         let item_prize = document.getElementById('item_prize').value;
         let item_id = document.getElementById('item_id').value;
@@ -1123,7 +589,7 @@ $(document).ready(function(){
     return false;
     })
     
-})
+}) */
 
 //add items to featured list without refresh
 $(document).ready(function(){
@@ -1142,6 +608,27 @@ $(document).ready(function(){
             }
         })
         $("#featuredItem").val('');
+        return false;
+    })
+    
+})
+//add items to daily deals list without refresh
+$(document).ready(function(){
+    $("#add_deal").click(function(){
+        
+        let dealItem = document.getElementById('dealItem').value;
+        // alert(featuredItem + featuredRestaurant);
+        $.ajax({
+            type: "POST",
+            url: "add_deals.php",
+            data: {dealItem:dealItem},
+            success: function(response){
+                $("#featuredTable").hide();
+                $(".dealTable").html(response);
+                // $("#item_id").fade();
+            }
+        })
+        $("#dealItem").val('');
         return false;
     })
     
@@ -1208,6 +695,11 @@ $(document).ready(function(){
 //get item id to remove from featured list
 function removeFeatured(id){
     window.open("remove_featured.php?remove="+id, "_parent");
+    return;
+}
+//get item id to remove from daily deals list
+function removeDeal(id){
+    window.open("remove_deals.php?remove="+id, "_parent");
     return;
 }
 
@@ -1304,6 +796,26 @@ $(document).ready(function(){
       return false;
   })  
 })
+
+//send broadcast message to customers
+$(document).ready(function(){
+    $("#send_broadcast").click(function(){
+        let subject = document.getElementById("subject").value;
+        let broadcast_message = document.getElementById("broadcast_message").value;
+        // alert(subject);
+        $.ajax({
+            type: "POST",
+            url: "send_broadcast.php",
+            data: {subject:subject, broadcast_message:broadcast_message},
+            success: function(response){
+                $(".info").html(response);
+            }
+        });
+        $("#subject").val('');
+        $("#broadcast_message").val('');
+        return false;
+    })
+})
 //search highest selling items with date for admin
 $(document).ready(function(){
     $("#search_highest").click(function(){
@@ -1349,8 +861,11 @@ $(document).ready(function(){
 
 //Show events
 function displayEvent(event_id){
+    let summary = document.getElementById("summaryReports");
+    summary.style.display = "none";
     window.open("admin.php?event="+event_id, "_parent");
-    $(".summaryReports").hide();
+    
+    // $(".summaryReports").hide();
 }
 
 //Confirm Event done

@@ -1,4 +1,4 @@
-<div id="addBanner" class="sections">
+<div id="addBanner" class="sections displays">
     <h2>Banners & Adverts</h2>
     <hr>
     <div class="bannerBtns">
