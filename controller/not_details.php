@@ -18,7 +18,7 @@
             $user_info->bindvalue('email', $user);
             $user_info->execute();
             $view = $user_info->fetch();
-            echo $view->first_name . " " . $view->last_name. " - Media Gallery";
+            echo $view->first_name . " " . $view->last_name. " - Notification centre";
         ?>
     </title>
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
@@ -32,55 +32,46 @@
     <?php include "header.php";?>
  
     <?php include "mobile_menu.php";?>
-   
+
     <main>
-        <div id="events_media">
-            <h3>Our Media Gallery</h3>
+    <?php
+        if(isset($_GET['notify_id'])){
+            $notify_id = $_GET['notify_id'];
+            $get_message = $connectdb->prepare("SELECT * FROM notifications WHERE notification_id = :notification_id");
+            $get_message->bindvalue("notification_id", $notify_id);
+            $get_message->execute();
+
+            
+            $views = $get_message->fetchAll();
+            foreach($views as $view):
+        
+    ?>
+        <section id="notification">
+            <h2><?php echo $view->subject?></h2>
             <hr>
-            <p>Take a peek at our world</p>
-            <div class="mediaBtns">
-                <button id="photoBtn" data-media="photos">Photos</button>
-                <button id="videoBtn" data-media="video">Videos</button>
+            
+            <div class="message_details">
+                <p><?php echo $view->details?>
+                    
             </div>
-            <div class="gallery" id="photos">
-                <?php
-                    $get_media = $connectdb->prepare("SELECT * FROM media WHERE media_type = 'photo' ORDER BY upload_date DESC");
-                    $get_media->execute();
+            
+        </section>
+        <?php
+            if($view->status == 0){
+                $update_status = $connectdb->prepare("UPDATE notifications SET status = 1 WHERE notification_id = :notification_id");
+                $update_status->bindvalue("notification_id", $notify_id);
+                $update_status->execute();
 
-                    $photos = $get_media->fetchAll();
-                    foreach($photos as $photo):
-                ?>
-                <figure>
-                    <img src="<?php echo "../media/". $photo->foto;?>" alt="Temix Media">
-                    <figcaption>
-                        <p><?php echo $photo->description;?></p>
-                    </figcaption>
-                </figure>
-                <?php endforeach;?>
-            </div>
-            <div class="gallery" id="video">
-                <?php
-                    $get_media = $connectdb->prepare("SELECT * FROM media WHERE media_type = 'video' ORDER BY upload_date DESC");
-                    $get_media->execute();
-
-                    $photos = $get_media->fetchAll();
-                    foreach($photos as $photo):
-                ?>
-                <figure>
-                    <video controls src="<?php echo '../media/'. $photo->foto;?>" alt="Temix Media"></video>
-                    <figcaption>
-                        <p><?php echo $photo->description;?></p>
-                    </figcaption>
-                </figure>
-                <?php endforeach;?>
-            </div>
-        </div>
+            }
+        ?>
+        <?php endforeach; }?>
+        
     </main>
 
     <footer>
         <?php include "footer.php"; ?>
     </footer>
-
+    
     <script src="bootstrap.min.js"></script>
     <script src="jquery.js"></script>
     <script src="script.js"></script>
@@ -90,6 +81,6 @@
 
 <?php
     }else{
-        header("Location: ../index.php");
+        header("Location: ../registration.php");
     }
 ?> 

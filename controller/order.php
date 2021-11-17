@@ -17,8 +17,8 @@
 
         if($confirm_order){
             /* insert transaction date and number */
-            $insert_date = $connectdb->prepare("UPDATE  orders SET order_date = :order_date, order_number = :order_number WHERE customer_email = :customer_email AND order_time = CURTIME()");
-            $insert_date->bindvalue('order_date', $today_date);
+            $insert_date = $connectdb->prepare("UPDATE  orders SET order_number = :order_number WHERE customer_email = :customer_email AND order_time = CURTIME()");
+            // $insert_date->bindvalue('order_date', $today_date);
             $insert_date->bindvalue('order_number', $order_num);
             $insert_date->bindvalue('customer_email', $customer);
             // $insert_date->bindvalue('order_time', $order_time);
@@ -38,7 +38,7 @@
             foreach($details as $detail){
                 $customer_name = $detail->first_name . ' ' . $detail->last_name;
             }
-
+            // echo $customer_name;
             /* get admin */
             /* $get_admin = $connectdb->prepare("SELECT email FROM users WHERE email = 'admin@temixempire.com'");
             $get_admin->execute();
@@ -57,9 +57,9 @@
 
             /* Send mail to Admin */
             $subject = "Temix Empire - New Order";
-            $message = "You have a new order from $customer_name n/ Click the Link below to view details n/ https://temixempire.com/admin/admin.php";
-            $header = "FROM: admin@temixempire.com";
-            mail("temidayomabel@gmail.com", $subject, $message, $header) or die("Error!");
+            $message = "You have a new order from $customer_name \n Click the Link below to view details \n https://temixempire.com/admin/admin.php";
+            $mailHeader = "From: admin@temixempire.com";
+            mail("temidayomabel@gmail.com, onostarmedia@gmail.com", $subject, $message, $mailHeader) or die("Error!");
 
             /* Send mail to Restaurant */
            /*  $subject2 = "Foodies - New Order";

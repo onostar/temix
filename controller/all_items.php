@@ -18,7 +18,7 @@
             $user_info->bindvalue('email', $user);
             $user_info->execute();
             $view = $user_info->fetch();
-            echo $view->first_name . " " . $view->last_name. " - Media Gallery";
+            echo $view->first_name . " " . $view->last_name. " - Archive";
         ?>
     </title>
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
@@ -30,57 +30,57 @@
 </head>
 <body>
     <?php include "header.php";?>
- 
+
     <?php include "mobile_menu.php";?>
-   
+
     <main>
-        <div id="events_media">
-            <h3>Our Media Gallery</h3>
+        <section id="searchResults">
+            <?php
+                $search_query = $connectdb->prepare("SELECT * FROM menu ORDER BY time_created");
+                $search_query->execute();
+                    
+            ?>
+            <h2><strong>Temix Menu</strong></h2>
             <hr>
-            <p>Take a peek at our world</p>
-            <div class="mediaBtns">
-                <button id="photoBtn" data-media="photos">Photos</button>
-                <button id="videoBtn" data-media="video">Videos</button>
-            </div>
-            <div class="gallery" id="photos">
-                <?php
-                    $get_media = $connectdb->prepare("SELECT * FROM media WHERE media_type = 'photo' ORDER BY upload_date DESC");
-                    $get_media->execute();
-
-                    $photos = $get_media->fetchAll();
-                    foreach($photos as $photo):
+            <div class="results">
+                
+                <?php 
+                    if(!$search_query->rowCount()){
+                        echo "<p class='no_result'>'No result found!'</p>";
+                    }
+                    $shows = $search_query->fetchAll();
+                    foreach($shows as $show):
                 ?>
                 <figure>
-                    <img src="<?php echo "../media/". $photo->foto;?>" alt="Temix Media">
-                    <figcaption>
-                        <p><?php echo $photo->description;?></p>
-                    </figcaption>
+                    <a href="javascript:void(0);" onclick="showItems('<?php echo $show->item_id?>')">
+                        <img src="<?php echo '../items/'.$show->item_foto;?>" alt="featured item">
+                    </a>
+                    <form action="cart.php" method="POST">
+                        <input type="hidden" name="cart_item_name" id="cart_item_name" value="<?php echo $show->item_name?>">
+                        <input type="hidden" name="cart_item_price" id="cart_item_price" value="<?php echo $show->item_prize?>">
+                        
+                        <input type="hidden" name="customer_email" id="customer_email" value="<?php echo $user?>">
+                        <input type="hidden" id="quantity" name="quantity" value="1">
+                        <figcaption>
+                            <div class="todo">
+                                <p class="first"><?php echo $show->item_name?></p>
+                                <p><i class="fas fa-layer-group"></i> <?php echo $show->item_category?></p>
+                                <span>₦ <?php echo number_format($show->item_prize)?></span>
+                            </div>
+                            <button type="submit" name="add_to_cart" id="add_to_cart" title="add to cart" class="add_cart"><i class="fas fa-shopping-cart"></i></button>
+                        </figcaption>
+                    </form>
                 </figure>
-                <?php endforeach;?>
+                
+                <?php endforeach ?>
             </div>
-            <div class="gallery" id="video">
-                <?php
-                    $get_media = $connectdb->prepare("SELECT * FROM media WHERE media_type = 'video' ORDER BY upload_date DESC");
-                    $get_media->execute();
+        </section>
 
-                    $photos = $get_media->fetchAll();
-                    foreach($photos as $photo):
-                ?>
-                <figure>
-                    <video controls src="<?php echo '../media/'. $photo->foto;?>" alt="Temix Media"></video>
-                    <figcaption>
-                        <p><?php echo $photo->description;?></p>
-                    </figcaption>
-                </figure>
-                <?php endforeach;?>
-            </div>
-        </div>
+        
     </main>
-
     <footer>
         <?php include "footer.php"; ?>
     </footer>
-
     <script src="bootstrap.min.js"></script>
     <script src="jquery.js"></script>
     <script src="script.js"></script>

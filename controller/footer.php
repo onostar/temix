@@ -155,10 +155,8 @@
                     <div class="data" id="textarea">
                         <textarea name="notes" id="notes" rows="5" placeholder="Add more information/description of your Event"></textarea>
                     </div>
-                    <div class="data">
-                        <button type="submit" id="book" name="book">Book Appointment <i class="fas fa-paper-plane"></i></button>
-                    </div>
                 </div>
+                <button type="submit" id="book" name="book">Book Appointment <i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
     </div>
