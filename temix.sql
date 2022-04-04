@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2021 at 09:53 PM
+-- Generation Time: Jan 30, 2022 at 03:26 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -58,7 +58,8 @@ INSERT INTO `appointments` (`booking_id`, `customer_name`, `customer_mail`, `cus
 (40, 'Chima James Onyema', 'mexylj@yahoo.com', '0998800099', '2021-07-25', 'Event (Decoration)', '2021-07-29', '23 rivers road, portharcourt', 'ii need a decoration of my event', 0),
 (41, 'Chima James Onyema', 'mexylj@yahoo.com', '0998800099', '2021-07-25', 'Event (Decoration)', '2021-07-29', '23 rivers road, portharcourt', 'ii need a decoration of my event', 0),
 (42, 'Kelly Ikpefua', 'onostarkels@gmail.com', '07068897068', '2021-07-28', 'Event (Cake design)', '2021-07-30', '27 father healing street off ometan road', 'just testing it', -1),
-(43, 'Nkem Ayaolugu', 'nkem@yahoo.com', '0909090909', '2021-09-23', 'Event (Decoration)', '2021-10-30', 'ku plaza benin', 'i want a befiting decoration for my bday', 0);
+(43, 'Nkem Ayaolugu', 'nkem@yahoo.com', '0909090909', '2021-09-23', 'Event (Decoration)', '2021-10-30', 'ku plaza benin', 'i want a befiting decoration for my bday', 0),
+(44, 'Awolowo Bright', 'mae@mma.com', '9899900999', '2021-11-25', 'Event (Cake design)', '2022-10-24', 'h jjhjhakcn ', 'klacmm lkalckl lklk', 0);
 
 -- --------------------------------------------------------
 
@@ -379,7 +380,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `banner_ads`
